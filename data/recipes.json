@@ -1,0 +1,118 @@
+[
+  {
+    "id": "mojito-classic",
+    "name": "Classic Mojito",
+    "description": "Minty, citrusy highball built in the glass.",
+    "difficulty": "easy",
+    "serving_size": 1,
+    "flavor_tags": ["citrus", "herbal", "refreshing", "rum"],
+    "ingredients": [
+      { "name": "White rum", "amount": 2, "unit": "oz" },
+      { "name": "Fresh lime juice", "amount": 1, "unit": "oz" },
+      { "name": "Simple syrup", "amount": 0.75, "unit": "oz" },
+      { "name": "Club soda", "amount": 2, "unit": "oz" },
+      { "name": "Mint leaves", "amount": 8, "unit": "leaves" }
+    ],
+    "steps": [
+      { "order": 1, "action": "Muddle mint with syrup, add lime and rum, fill with ice, top with soda." }
+    ]
+  },
+  {
+    "id": "daiquiri-classic",
+    "name": "Classic Daiquiri",
+    "description": "A clean shaken sour with just rum, lime, and sugar.",
+    "difficulty": "easy",
+    "serving_size": 1,
+    "flavor_tags": ["citrus", "rum", "tart"],
+    "ingredients": [
+      { "name": "White rum", "amount": 2, "unit": "oz" },
+      { "name": "Fresh lime juice", "amount": 1, "unit": "oz" },
+      { "name": "Simple syrup", "amount": 0.75, "unit": "oz" }
+    ],
+    "steps": [
+      { "order": 1, "action": "Shake all ingredients with ice; strain into a chilled coupe." }
+    ]
+  },
+  {
+    "id": "margarita-classic",
+    "name": "Classic Margarita",
+    "description": "Tequila sour brightened with orange liqueur.",
+    "difficulty": "medium",
+    "serving_size": 1,
+    "flavor_tags": ["citrus", "tequila", "tart"],
+    "ingredients": [
+      { "name": "Tequila", "amount": 2, "unit": "oz" },
+      { "name": "Triple sec", "amount": 1, "unit": "oz" },
+      { "name": "Fresh lime juice", "amount": 1, "unit": "oz" },
+      { "name": "Simple syrup", "amount": 0.25, "unit": "oz" }
+    ],
+    "steps": [
+      { "order": 1, "action": "Shake with ice, strain into a salt-rimmed glass over fresh ice." }
+    ]
+  },
+  {
+    "id": "old-fashioned",
+    "name": "Old Fashioned",
+    "description": "Whiskey, bitters, and a hint of sweetness over ice.",
+    "difficulty": "medium",
+    "serving_size": 1,
+    "flavor_tags": ["spirit-forward", "bitters", "whiskey"],
+    "ingredients": [
+      { "name": "Bourbon whiskey", "amount": 2, "unit": "oz" },
+      { "name": "Simple syrup", "amount": 0.25, "unit": "oz" },
+      { "name": "Angostura bitters", "amount": 2, "unit": "dashes" },
+      { "name": "Orange peel", "amount": 1, "unit": "piece" }
+    ],
+    "steps": [
+      { "order": 1, "action": "Stir whiskey, syrup, and bitters with ice; strain over a large cube; express orange peel." }
+    ]
+  },
+  {
+    "id": "gin-tonic",
+    "name": "Gin & Tonic",
+    "description": "Effervescent and botanical — a bar staple.",
+    "difficulty": "easy",
+    "serving_size": 1,
+    "flavor_tags": ["botanical", "refreshing", "gin"],
+    "ingredients": [
+      { "name": "Gin", "amount": 2, "unit": "oz" },
+      { "name": "Tonic water", "amount": 4, "unit": "oz" },
+      { "name": "Fresh lime juice", "amount": 0.25, "unit": "oz" }
+    ],
+    "steps": [
+      { "order": 1, "action": "Build gin and tonic over ice in a highball; squeeze lime wedge or add juice." }
+    ]
+  },
+  {
+    "id": "negroni",
+    "name": "Negroni",
+    "description": "Equal-parts bitter, sweet, and gin — stirred and serious.",
+    "difficulty": "easy",
+    "serving_size": 1,
+    "flavor_tags": ["bitter", "gin", "aperitif"],
+    "ingredients": [
+      { "name": "Gin", "amount": 1, "unit": "oz" },
+      { "name": "Campari", "amount": 1, "unit": "oz" },
+      { "name": "Sweet vermouth", "amount": 1, "unit": "oz" }
+    ],
+    "steps": [
+      { "order": 1, "action": "Stir all three with ice; strain over fresh ice; garnish with orange peel." }
+    ]
+  },
+  {
+    "id": "white-russian",
+    "name": "White Russian",
+    "description": "Creamy coffee cocktail — dessert in a glass.",
+    "difficulty": "easy",
+    "serving_size": 1,
+    "flavor_tags": ["sweet", "coffee", "creamy"],
+    "ingredients": [
+      { "name": "Vodka", "amount": 2, "unit": "oz" },
+      { "name": "Coffee liqueur", "amount": 1, "unit": "oz" },
+      { "name": "Heavy cream", "amount": 1, "unit": "oz" }
+    ],
+    "steps": [
+      { "order": 1, "action": "Build vodka and coffee liqueur over ice; float cream on top." }
+    ]
+  }
+]
