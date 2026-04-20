@@ -1,118 +1,336 @@
 [
   {
-    "id": "mojito-classic",
-    "name": "Classic Mojito",
-    "description": "Minty, citrusy highball built in the glass.",
-    "difficulty": "easy",
-    "serving_size": 1,
-    "flavor_tags": ["citrus", "herbal", "refreshing", "rum"],
-    "ingredients": [
-      { "name": "White rum", "amount": 2, "unit": "oz" },
-      { "name": "Fresh lime juice", "amount": 1, "unit": "oz" },
-      { "name": "Simple syrup", "amount": 0.75, "unit": "oz" },
-      { "name": "Club soda", "amount": 2, "unit": "oz" },
-      { "name": "Mint leaves", "amount": 8, "unit": "leaves" }
-    ],
-    "steps": [
-      { "order": 1, "action": "Muddle mint with syrup, add lime and rum, fill with ice, top with soda." }
-    ]
-  },
-  {
-    "id": "daiquiri-classic",
-    "name": "Classic Daiquiri",
-    "description": "A clean shaken sour with just rum, lime, and sugar.",
-    "difficulty": "easy",
-    "serving_size": 1,
-    "flavor_tags": ["citrus", "rum", "tart"],
-    "ingredients": [
-      { "name": "White rum", "amount": 2, "unit": "oz" },
-      { "name": "Fresh lime juice", "amount": 1, "unit": "oz" },
-      { "name": "Simple syrup", "amount": 0.75, "unit": "oz" }
-    ],
-    "steps": [
-      { "order": 1, "action": "Shake all ingredients with ice; strain into a chilled coupe." }
-    ]
-  },
-  {
     "id": "margarita-classic",
     "name": "Classic Margarita",
-    "description": "Tequila sour brightened with orange liqueur.",
-    "difficulty": "medium",
-    "serving_size": 1,
-    "flavor_tags": ["citrus", "tequila", "tart"],
-    "ingredients": [
-      { "name": "Tequila", "amount": 2, "unit": "oz" },
-      { "name": "Triple sec", "amount": 1, "unit": "oz" },
-      { "name": "Fresh lime juice", "amount": 1, "unit": "oz" },
-      { "name": "Simple syrup", "amount": 0.25, "unit": "oz" }
-    ],
-    "steps": [
-      { "order": 1, "action": "Shake with ice, strain into a salt-rimmed glass over fresh ice." }
-    ]
-  },
-  {
-    "id": "old-fashioned",
-    "name": "Old Fashioned",
-    "description": "Whiskey, bitters, and a hint of sweetness over ice.",
-    "difficulty": "medium",
-    "serving_size": 1,
-    "flavor_tags": ["spirit-forward", "bitters", "whiskey"],
-    "ingredients": [
-      { "name": "Bourbon whiskey", "amount": 2, "unit": "oz" },
-      { "name": "Simple syrup", "amount": 0.25, "unit": "oz" },
-      { "name": "Angostura bitters", "amount": 2, "unit": "dashes" },
-      { "name": "Orange peel", "amount": 1, "unit": "piece" }
-    ],
-    "steps": [
-      { "order": 1, "action": "Stir whiskey, syrup, and bitters with ice; strain over a large cube; express orange peel." }
-    ]
-  },
-  {
-    "id": "gin-tonic",
-    "name": "Gin & Tonic",
-    "description": "Effervescent and botanical — a bar staple.",
+    "description": "A tart tequila sour with orange liqueur and a salted rim.",
     "difficulty": "easy",
     "serving_size": 1,
-    "flavor_tags": ["botanical", "refreshing", "gin"],
+    "base_spirit": "tequila",
+    "flavor_tags": ["citrus", "tart", "refreshing"],
     "ingredients": [
-      { "name": "Gin", "amount": 2, "unit": "oz" },
-      { "name": "Tonic water", "amount": 4, "unit": "oz" },
-      { "name": "Fresh lime juice", "amount": 0.25, "unit": "oz" }
+      { "name": "tequila", "amount": 2, "unit": "oz" },
+      { "name": "lime juice", "amount": 1, "unit": "oz" },
+      { "name": "triple sec", "amount": 0.75, "unit": "oz" },
+      { "name": "salt", "amount": null, "unit": "rim" }
     ],
     "steps": [
-      { "order": 1, "action": "Build gin and tonic over ice in a highball; squeeze lime wedge or add juice." }
+      { "order": 1, "action": "Rim a rocks glass with salt.", "tip": "Use a lime wedge to moisten the rim first." },
+      { "order": 2, "action": "Add tequila, lime juice, and triple sec to a shaker with ice." },
+      { "order": 3, "action": "Shake hard for 15 seconds until chilled." },
+      { "order": 4, "action": "Strain into the prepared glass over fresh ice." }
+    ]
+  },
+  {
+    "id": "paloma",
+    "name": "Paloma",
+    "description": "A bright tequila highball with grapefruit and lime.",
+    "difficulty": "easy",
+    "serving_size": 1,
+    "base_spirit": "tequila",
+    "flavor_tags": ["citrus", "bubbly", "refreshing"],
+    "ingredients": [
+      { "name": "tequila", "amount": 2, "unit": "oz" },
+      { "name": "grapefruit soda", "amount": 4, "unit": "oz" },
+      { "name": "lime juice", "amount": 0.5, "unit": "oz" },
+      { "name": "salt", "amount": null, "unit": "pinch" }
+    ],
+    "steps": [
+      { "order": 1, "action": "Fill a tall glass with ice." },
+      { "order": 2, "action": "Pour in tequila and lime juice." },
+      { "order": 3, "action": "Top with grapefruit soda and a pinch of salt." },
+      { "order": 4, "action": "Stir gently and garnish with a grapefruit wedge." }
+    ]
+  },
+  {
+    "id": "moscow-mule",
+    "name": "Moscow Mule",
+    "description": "A crisp vodka cocktail with ginger beer and lime.",
+    "difficulty": "easy",
+    "serving_size": 1,
+    "base_spirit": "vodka",
+    "flavor_tags": ["spicy", "citrus", "refreshing"],
+    "ingredients": [
+      { "name": "vodka", "amount": 2, "unit": "oz" },
+      { "name": "ginger beer", "amount": 4, "unit": "oz" },
+      { "name": "lime juice", "amount": 0.5, "unit": "oz" },
+      { "name": "mint", "amount": null, "unit": "sprig" }
+    ],
+    "steps": [
+      { "order": 1, "action": "Fill a mule mug with ice." },
+      { "order": 2, "action": "Add vodka and lime juice." },
+      { "order": 3, "action": "Top with ginger beer and stir gently." },
+      { "order": 4, "action": "Garnish with mint and a lime wedge." }
+    ]
+  },
+  {
+    "id": "cosmopolitan",
+    "name": "Cosmopolitan",
+    "description": "A pink vodka cocktail with cranberry and orange notes.",
+    "difficulty": "medium",
+    "serving_size": 1,
+    "base_spirit": "vodka",
+    "flavor_tags": ["citrus", "fruity", "tart"],
+    "ingredients": [
+      { "name": "vodka", "amount": 1.5, "unit": "oz" },
+      { "name": "triple sec", "amount": 1, "unit": "oz" },
+      { "name": "cranberry juice", "amount": 0.5, "unit": "oz" },
+      { "name": "lime juice", "amount": 0.5, "unit": "oz" }
+    ],
+    "steps": [
+      { "order": 1, "action": "Chill a coupe glass." },
+      { "order": 2, "action": "Add all ingredients to a shaker with ice." },
+      { "order": 3, "action": "Shake until very cold." },
+      { "order": 4, "action": "Double strain into the chilled glass.", "tip": "Express an orange peel over the surface if available." }
+    ]
+  },
+  {
+    "id": "espresso-martini",
+    "name": "Espresso Martini",
+    "description": "A rich vodka cocktail with espresso and coffee liqueur.",
+    "difficulty": "medium",
+    "serving_size": 1,
+    "base_spirit": "vodka",
+    "flavor_tags": ["coffee", "rich", "smooth"],
+    "ingredients": [
+      { "name": "vodka", "amount": 1.5, "unit": "oz" },
+      { "name": "coffee liqueur", "amount": 1, "unit": "oz" },
+      { "name": "espresso", "amount": 1, "unit": "oz" },
+      { "name": "simple syrup", "amount": 0.25, "unit": "oz" }
+    ],
+    "steps": [
+      { "order": 1, "action": "Chill a martini or coupe glass." },
+      { "order": 2, "action": "Add all ingredients to a shaker with plenty of ice." },
+      { "order": 3, "action": "Shake hard until the tin is frosty and the foam builds." },
+      { "order": 4, "action": "Double strain into the chilled glass.", "tip": "Three coffee beans make a classic garnish." }
+    ]
+  },
+  {
+    "id": "gin-and-tonic",
+    "name": "Gin and Tonic",
+    "description": "A clean, bitter highball with botanical gin and tonic water.",
+    "difficulty": "easy",
+    "serving_size": 1,
+    "base_spirit": "gin",
+    "flavor_tags": ["bitter", "bubbly", "crisp"],
+    "ingredients": [
+      { "name": "gin", "amount": 2, "unit": "oz" },
+      { "name": "tonic water", "amount": 4, "unit": "oz" },
+      { "name": "lime wedge", "amount": 1, "unit": "piece" }
+    ],
+    "steps": [
+      { "order": 1, "action": "Fill a highball glass with fresh ice." },
+      { "order": 2, "action": "Pour in the gin." },
+      { "order": 3, "action": "Top with tonic water and give one gentle stir." },
+      { "order": 4, "action": "Squeeze in a lime wedge and drop it in." }
+    ]
+  },
+  {
+    "id": "tom-collins",
+    "name": "Tom Collins",
+    "description": "A sparkling gin sour with lemon and soda.",
+    "difficulty": "easy",
+    "serving_size": 1,
+    "base_spirit": "gin",
+    "flavor_tags": ["citrus", "bubbly", "light"],
+    "ingredients": [
+      { "name": "gin", "amount": 2, "unit": "oz" },
+      { "name": "lemon juice", "amount": 1, "unit": "oz" },
+      { "name": "simple syrup", "amount": 0.5, "unit": "oz" },
+      { "name": "club soda", "amount": 2, "unit": "oz" }
+    ],
+    "steps": [
+      { "order": 1, "action": "Add gin, lemon juice, and simple syrup to a shaker with ice." },
+      { "order": 2, "action": "Shake briefly until chilled." },
+      { "order": 3, "action": "Strain into a tall glass over fresh ice." },
+      { "order": 4, "action": "Top with club soda and garnish with a lemon wheel." }
     ]
   },
   {
     "id": "negroni",
     "name": "Negroni",
-    "description": "Equal-parts bitter, sweet, and gin — stirred and serious.",
-    "difficulty": "easy",
+    "description": "A bittersweet stirred cocktail with gin, Campari, and vermouth.",
+    "difficulty": "medium",
     "serving_size": 1,
-    "flavor_tags": ["bitter", "gin", "aperitif"],
+    "base_spirit": "gin",
+    "flavor_tags": ["bitter", "herbal", "spirit-forward"],
     "ingredients": [
-      { "name": "Gin", "amount": 1, "unit": "oz" },
-      { "name": "Campari", "amount": 1, "unit": "oz" },
-      { "name": "Sweet vermouth", "amount": 1, "unit": "oz" }
+      { "name": "gin", "amount": 1, "unit": "oz" },
+      { "name": "campari", "amount": 1, "unit": "oz" },
+      { "name": "sweet vermouth", "amount": 1, "unit": "oz" }
     ],
     "steps": [
-      { "order": 1, "action": "Stir all three with ice; strain over fresh ice; garnish with orange peel." }
+      { "order": 1, "action": "Add all ingredients to a mixing glass with ice." },
+      { "order": 2, "action": "Stir for 20 to 25 seconds until chilled and diluted." },
+      { "order": 3, "action": "Strain over a large cube in a rocks glass." },
+      { "order": 4, "action": "Express an orange peel over the drink and garnish." }
     ]
   },
   {
-    "id": "white-russian",
-    "name": "White Russian",
-    "description": "Creamy coffee cocktail — dessert in a glass.",
+    "id": "daiquiri",
+    "name": "Daiquiri",
+    "description": "A classic rum sour that is crisp, bright, and balanced.",
     "difficulty": "easy",
     "serving_size": 1,
-    "flavor_tags": ["sweet", "coffee", "creamy"],
+    "base_spirit": "rum",
+    "flavor_tags": ["citrus", "dry", "refreshing"],
     "ingredients": [
-      { "name": "Vodka", "amount": 2, "unit": "oz" },
-      { "name": "Coffee liqueur", "amount": 1, "unit": "oz" },
-      { "name": "Heavy cream", "amount": 1, "unit": "oz" }
+      { "name": "white rum", "amount": 2, "unit": "oz" },
+      { "name": "lime juice", "amount": 1, "unit": "oz" },
+      { "name": "simple syrup", "amount": 0.75, "unit": "oz" }
     ],
     "steps": [
-      { "order": 1, "action": "Build vodka and coffee liqueur over ice; float cream on top." }
+      { "order": 1, "action": "Add all ingredients to a shaker with ice." },
+      { "order": 2, "action": "Shake hard until thoroughly chilled." },
+      { "order": 3, "action": "Double strain into a chilled coupe." }
+    ]
+  },
+  {
+    "id": "mojito",
+    "name": "Mojito",
+    "description": "A minty rum highball with lime and soda.",
+    "difficulty": "medium",
+    "serving_size": 1,
+    "base_spirit": "rum",
+    "flavor_tags": ["minty", "citrus", "refreshing"],
+    "ingredients": [
+      { "name": "white rum", "amount": 2, "unit": "oz" },
+      { "name": "lime juice", "amount": 0.75, "unit": "oz" },
+      { "name": "simple syrup", "amount": 0.5, "unit": "oz" },
+      { "name": "mint leaves", "amount": 8, "unit": "leaf" },
+      { "name": "club soda", "amount": 2, "unit": "oz" }
+    ],
+    "steps": [
+      { "order": 1, "action": "Gently muddle mint leaves with lime juice and simple syrup in a tall glass.", "tip": "Press lightly so the mint stays bright, not bitter." },
+      { "order": 2, "action": "Add rum and fill the glass with crushed ice." },
+      { "order": 3, "action": "Top with club soda and stir from the bottom up." },
+      { "order": 4, "action": "Crown with more crushed ice and a mint bouquet." }
+    ]
+  },
+  {
+    "id": "mai-tai",
+    "name": "Mai Tai",
+    "description": "A layered tiki rum drink with citrus and almond richness.",
+    "difficulty": "hard",
+    "serving_size": 1,
+    "base_spirit": "rum",
+    "flavor_tags": ["tropical", "nutty", "citrus"],
+    "ingredients": [
+      { "name": "aged rum", "amount": 1, "unit": "oz" },
+      { "name": "white rum", "amount": 1, "unit": "oz" },
+      { "name": "orange curaçao", "amount": 0.5, "unit": "oz" },
+      { "name": "orgeat", "amount": 0.5, "unit": "oz" },
+      { "name": "lime juice", "amount": 0.75, "unit": "oz" },
+      { "name": "dark rum", "amount": 0.5, "unit": "oz" }
+    ],
+    "steps": [
+      { "order": 1, "action": "Add aged rum, white rum, curaçao, orgeat, and lime juice to a shaker with crushed ice." },
+      { "order": 2, "action": "Shake briefly to combine and chill." },
+      { "order": 3, "action": "Dump the contents into a rocks glass." },
+      { "order": 4, "action": "Float the dark rum on top and garnish with mint and spent lime shell." }
+    ]
+  },
+  {
+    "id": "old-fashioned",
+    "name": "Old Fashioned",
+    "description": "A whiskey classic built on sugar, bitters, and dilution.",
+    "difficulty": "easy",
+    "serving_size": 1,
+    "base_spirit": "whiskey",
+    "flavor_tags": ["spirit-forward", "warm", "bittersweet"],
+    "ingredients": [
+      { "name": "bourbon", "amount": 2, "unit": "oz" },
+      { "name": "simple syrup", "amount": 0.25, "unit": "oz" },
+      { "name": "angostura bitters", "amount": 2, "unit": "dash" },
+      { "name": "orange peel", "amount": 1, "unit": "piece" }
+    ],
+    "steps": [
+      { "order": 1, "action": "Add bourbon, simple syrup, and bitters to a mixing glass with ice." },
+      { "order": 2, "action": "Stir until chilled and slightly diluted." },
+      { "order": 3, "action": "Strain over a large cube in a rocks glass." },
+      { "order": 4, "action": "Express an orange peel over the drink and use it as garnish." }
+    ]
+  },
+  {
+    "id": "whiskey-sour",
+    "name": "Whiskey Sour",
+    "description": "A balanced whiskey sour with lemon and a silky texture.",
+    "difficulty": "medium",
+    "serving_size": 1,
+    "base_spirit": "whiskey",
+    "flavor_tags": ["citrus", "smooth", "balanced"],
+    "ingredients": [
+      { "name": "bourbon", "amount": 2, "unit": "oz" },
+      { "name": "lemon juice", "amount": 0.75, "unit": "oz" },
+      { "name": "simple syrup", "amount": 0.75, "unit": "oz" },
+      { "name": "egg white", "amount": 0.75, "unit": "oz" }
+    ],
+    "steps": [
+      { "order": 1, "action": "Add all ingredients to a shaker without ice and dry shake.", "tip": "Dry shaking first helps build a stable foam." },
+      { "order": 2, "action": "Add ice and shake again until chilled." },
+      { "order": 3, "action": "Double strain into a rocks glass over fresh ice." },
+      { "order": 4, "action": "Top with a few drops of bitters if desired." }
+    ]
+  },
+  {
+    "id": "boulevardier",
+    "name": "Boulevardier",
+    "description": "A whiskey variation on the Negroni with depth and spice.",
+    "difficulty": "medium",
+    "serving_size": 1,
+    "base_spirit": "whiskey",
+    "flavor_tags": ["bitter", "rich", "spirit-forward"],
+    "ingredients": [
+      { "name": "bourbon", "amount": 1.25, "unit": "oz" },
+      { "name": "campari", "amount": 1, "unit": "oz" },
+      { "name": "sweet vermouth", "amount": 1, "unit": "oz" }
+    ],
+    "steps": [
+      { "order": 1, "action": "Add all ingredients to a mixing glass with ice." },
+      { "order": 2, "action": "Stir until chilled and glossy." },
+      { "order": 3, "action": "Strain into a chilled coupe or over ice in a rocks glass." },
+      { "order": 4, "action": "Garnish with an expressed orange peel." }
+    ]
+  },
+  {
+    "id": "virgin-mojito",
+    "name": "Virgin Mojito",
+    "description": "A non-alcoholic mint cooler with lime and soda.",
+    "difficulty": "easy",
+    "serving_size": 1,
+    "base_spirit": "non-alcoholic",
+    "flavor_tags": ["minty", "citrus", "bubbly"],
+    "ingredients": [
+      { "name": "lime juice", "amount": 0.75, "unit": "oz" },
+      { "name": "simple syrup", "amount": 0.5, "unit": "oz" },
+      { "name": "mint leaves", "amount": 8, "unit": "leaf" },
+      { "name": "club soda", "amount": 4, "unit": "oz" }
+    ],
+    "steps": [
+      { "order": 1, "action": "Gently muddle mint leaves with lime juice and simple syrup in a tall glass." },
+      { "order": 2, "action": "Fill the glass with crushed ice." },
+      { "order": 3, "action": "Top with club soda and stir lightly." },
+      { "order": 4, "action": "Garnish with fresh mint and a lime wheel." }
+    ]
+  },
+  {
+    "id": "shirley-temple",
+    "name": "Shirley Temple",
+    "description": "A sweet non-alcoholic soda drink with grenadine and citrus.",
+    "difficulty": "easy",
+    "serving_size": 1,
+    "base_spirit": "non-alcoholic",
+    "flavor_tags": ["sweet", "fruity", "bubbly"],
+    "ingredients": [
+      { "name": "ginger ale", "amount": 4, "unit": "oz" },
+      { "name": "grenadine", "amount": 0.5, "unit": "oz" },
+      { "name": "lime juice", "amount": 0.25, "unit": "oz" },
+      { "name": "cherry", "amount": 1, "unit": "piece" }
+    ],
+    "steps": [
+      { "order": 1, "action": "Fill a highball glass with ice." },
+      { "order": 2, "action": "Add grenadine and lime juice." },
+      { "order": 3, "action": "Top with ginger ale and stir gently." },
+      { "order": 4, "action": "Garnish with a cherry." }
     ]
   }
 ]

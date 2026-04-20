@@ -1,6 +1,6 @@
 # HangoverGPT 🍹
 
-An AI-powered cocktail simulator website built with Python and Streamlit. Visit the site, tell us what ingredients you have or what mood you're in, and get personalized cocktail recipes with interactive step-by-step mixing guidance — no account needed, just open and enjoy.
+An AI-powered cocktail simulator website built with Python and Streamlit. Visit the site, tell us what ingredients you have or what mood you're in, and get personalized cocktail recipes with interactive step-by-step mixing guidance.
 
 ---
 
@@ -19,7 +19,7 @@ An AI-powered cocktail simulator website built with Python and Streamlit. Visit 
 |---|---|
 | **Language** | Python 3.10+ |
 | **Framework** | Streamlit |
-| **AI Integration** | Anthropic Claude API via `st.secrets` |
+| **AI Integration** | Minimax API (CN Endpoint, OpenAI-compatible) via `st.secrets` |
 | **Data Storage** | JSON file or SQLite for recipe data |
 | **Deployment** | Streamlit Community Cloud |
 
@@ -74,8 +74,10 @@ cd pour-decisions
 pip install -r requirements.txt
 
 # Set up API key
-# Add your Anthropic API key to .streamlit/secrets.toml:
-# ANTHROPIC_API_KEY = "your-key-here"
+# Copy .streamlit/secrets.example.toml to .streamlit/secrets.toml
+# and set your Minimax API key:
+# MINIMAX_API_KEY = "your-key-here"
+# MINIMAX_BASE_URL = "https://api.minimax.chat/v1"
 
 # Run the app
 streamlit run app.py

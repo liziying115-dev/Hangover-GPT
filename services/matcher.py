@@ -1,56 +1,60 @@
-"""Ingredient-based recipe matching for HangoverGPT 🍹."""
+"""Ingredient-based recipe matching."""
 
 from __future__ import annotations
 
-
-def _normalize(name: str) -> str:
-    return " ".join(str(name).strip().lower().split())
-
-
-def _normalized_user_set(user_ingredients: list[str]) -> set[str]:
-    return {_normalize(x) for x in user_ingredients if x and str(x).strip()}
+import json
+from pathlib import Path
 
 
-def _recipe_ingredient_names(recipe: dict) -> list[str]:
-    return [ing["name"] for ing in recipe.get("ingredients", [])]
+def _normalize(value: str) -> str:
+    return value.strip().lower()
+
+
+def load_recipes(path: str = "data/recipes.json") -> list[dict]:
+    with Path(path).open() as file:
+        return json.load(file)
 
 
 def match_recipes(user_ingredients: list[str], recipes: list[dict]) -> list[dict]:
+    """Return recipes ranked by ingredient overlap.
+
+    Each result is the recipe dict augmented with:
+      - match_type: "exact" | "partial"
+      - missing: list of ingredient names not supplied by the user
     """
-    Match recipes against a pantry list (case-insensitive).
+    normalized_ingredients = {_normalize(ingredient) for ingredient in user_ingredients if ingredient.strip()}
+    if not normalized_ingredients:
+        return []
 
-    - **exact**: user has every recipe ingredient name.
-    - **partial**: user matches at least one ingredient but not all.
-
-    Each item is the recipe dict plus ``match_type`` and ``missing_ingredients``
-    (original casing from the recipe). Partial matches are sorted by fewest
-    missing ingredients first; exact matches precede partials.
-    """
-    user_set = _normalized_user_set(user_ingredients)
-    exact: list[dict] = []
-    partial: list[dict] = []
-
+    matches: list[dict] = []
     for recipe in recipes:
-        names = _recipe_ingredient_names(recipe)
-        if not names:
+        recipe_ingredients = recipe.get("ingredients", [])
+        if not recipe_ingredients:
             continue
 
-        missing: list[str] = []
-        for raw_name in names:
-            if _normalize(raw_name) not in user_set:
-                missing.append(raw_name)
+        required_ingredients = [_normalize(ingredient["name"]) for ingredient in recipe_ingredients]
+        required_set = set(required_ingredients)
+        matched = required_set & normalized_ingredients
+        if not matched:
+            continue
 
-        matched = len(names) - len(missing)
-        row = {
-            **recipe,
-            "match_type": "exact" if not missing else "partial",
-            "missing_ingredients": missing,
-        }
+        missing = sorted(required_set - normalized_ingredients)
+        matches.append(
+            {
+                **recipe,
+                "match_type": "exact" if not missing else "partial",
+                "missing": missing,
+                "matched_ingredients": sorted(matched),
+                "match_score": len(matched) / len(required_set),
+            }
+        )
 
-        if not missing:
-            exact.append(row)
-        elif matched > 0:
-            partial.append(row)
-
-    partial.sort(key=lambda r: len(r["missing_ingredients"]))
-    return exact + partial
+    return sorted(
+        matches,
+        key=lambda recipe: (
+            recipe["match_type"] != "exact",
+            -recipe["match_score"],
+            len(recipe["missing"]),
+            recipe["name"].lower(),
+        ),
+    )
