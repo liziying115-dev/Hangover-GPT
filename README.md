@@ -6,7 +6,7 @@ An AI-powered cocktail simulator built with Python and Streamlit. Tell us what i
 
 ## Live Demo
 
-> **[https://pour-decisions.streamlit.app](https://pour-decisions.streamlit.app)**
+> **[https://hangover-gpt-kak8znm3ikhbsuzuaqqm9y.streamlit.app](https://hangover-gpt-kak8znm3ikhbsuzuaqqm9y.streamlit.app)**
 
 The app is deployed on Streamlit Community Cloud and auto-redeploys on every push to `main`.
 
