@@ -71,8 +71,8 @@ All secrets are managed via Streamlit's native secrets system, **not** `.env` fi
 |---|---|---|---|
 | `MINIMAX_API_KEY` | **Yes** | — | Minimax API key — [minimaxi.com](https://www.minimaxi.com/) |
 | `MINIMAX_BASE_URL` | No | `https://api.minimax.chat/v1` | Minimax regional endpoint |
-| `SUPABASE_URL` | **Yes** (prod) | — | Project URL — Supabase Dashboard → Settings → API |
-| `SUPABASE_KEY` | **Yes** (prod) | — | Anon/public key — same location |
+| `SUPABASE_URL` | **Yes** (prod) | — | `https://zsieidrlehjzcgktayde.supabase.co` |
+| `SUPABASE_KEY` | **Yes** (prod) | — | Anon/public key — Supabase Dashboard → Settings → API |
 
 The app falls back to `data/recipes.json` when Supabase credentials are absent, so local development works without them.
 
