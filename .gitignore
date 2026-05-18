@@ -1,7 +1,29 @@
+# Streamlit secrets — never commit
 .streamlit/secrets.toml
+
+# Python bytecode
 __pycache__/
 *.pyc
 *.pyo
+*.pyd
+
+# Environment variable files — never commit
 .env
+.env.local
+.env.production
+
+# Databases
 *.db
+*.sqlite3
+
+# macOS
 .DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Virtual environments
+venv/
+.venv/
+env/

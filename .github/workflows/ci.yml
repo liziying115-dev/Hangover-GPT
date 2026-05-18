@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-validate:
+    name: Lint & Validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Check Python syntax (all source files)
+        run: |
+          python -m py_compile app.py
+          for f in pages/*.py services/*.py components/*.py; do
+            python -m py_compile "$f" && echo "OK: $f"
+          done
+
+      - name: Validate recipe data is valid JSON
+        run: python -c "import json, sys; json.load(open('data/recipes.json')); print('recipes.json OK')"
+
+      - name: Smoke-test service imports
+        run: |
+          python -c "from services.matcher import match_recipes, load_recipes; print('matcher OK')"
+          python -c "from services.scaler import scale_recipe; print('scaler OK')"
+          python -c "from services.recommender import get_recommendations; print('recommender OK')"
+          python -c "from components.recipe_card import recipe_card; print('recipe_card OK')"
