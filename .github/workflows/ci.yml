@@ -39,4 +39,5 @@ jobs:
           python -c "from services.matcher import match_recipes, load_recipes; print('matcher OK')"
           python -c "from services.scaler import scale_recipe; print('scaler OK')"
           python -c "from services.recommender import get_recommendations; print('recommender OK')"
+          python -c "from services.db import fetch_recipes; print('db OK')"
           python -c "from components.recipe_card import recipe_card; print('recipe_card OK')"

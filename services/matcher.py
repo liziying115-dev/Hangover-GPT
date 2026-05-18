@@ -11,6 +11,17 @@ def _normalize(value: str) -> str:
 
 
 def load_recipes(path: str = "data/recipes.json") -> list[dict]:
+    """Load recipes from Supabase when credentials are available, otherwise
+    fall back to the local JSON file so the app always works.
+    """
+    try:
+        from services.db import fetch_recipes
+        recipes = fetch_recipes()
+        if recipes:
+            return recipes
+    except Exception:
+        pass
+
     with Path(path).open() as file:
         return json.load(file)
 

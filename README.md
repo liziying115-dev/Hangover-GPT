@@ -28,8 +28,8 @@ The app is deployed on Streamlit Community Cloud and auto-redeploys on every pus
 | **Language** | Python 3.10+ |
 | **Framework** | Streamlit |
 | **AI Integration** | Minimax API (CN Endpoint, OpenAI-compatible) via `st.secrets` |
-| **Data Storage** | `data/recipes.json` (static, 15+ recipes) |
-| **Hosting** | [Streamlit Community Cloud](https://streamlit.io/cloud) |
+| **Database** | [Supabase](https://supabase.com) (PostgreSQL) — falls back to `data/recipes.json` locally |
+| **App Hosting** | [Streamlit Community Cloud](https://streamlit.io/cloud) |
 | **CI** | GitHub Actions (`.github/workflows/ci.yml`) |
 
 ---
@@ -69,16 +69,23 @@ All secrets are managed via Streamlit's native secrets system, **not** `.env` fi
 
 | Variable | Required | Default | Description |
 |---|---|---|---|
-| `MINIMAX_API_KEY` | **Yes** | — | Minimax API key from [minimaxi.com](https://www.minimaxi.com/) |
+| `MINIMAX_API_KEY` | **Yes** | — | Minimax API key — [minimaxi.com](https://www.minimaxi.com/) |
 | `MINIMAX_BASE_URL` | No | `https://api.minimax.chat/v1` | Minimax regional endpoint |
+| `SUPABASE_URL` | **Yes** (prod) | — | Project URL — Supabase Dashboard → Settings → API |
+| `SUPABASE_KEY` | **Yes** (prod) | — | Anon/public key — same location |
+
+The app falls back to `data/recipes.json` when Supabase credentials are absent, so local development works without them.
 
 ### Local development
 
-Add these to `.streamlit/secrets.toml` (already in `.gitignore` — never commit this file):
+Add these to `.streamlit/secrets.toml` (in `.gitignore` — never commit this file):
 
 ```toml
 MINIMAX_API_KEY = "your-key-here"
 MINIMAX_BASE_URL = "https://api.minimax.chat/v1"
+
+SUPABASE_URL = "https://your-project-ref.supabase.co"
+SUPABASE_KEY = "your-anon-public-key"
 ```
 
 See `.env.example` and `.streamlit/secrets.example.toml` for reference templates.
@@ -87,25 +94,39 @@ See `.env.example` and `.streamlit/secrets.example.toml` for reference templates
 
 1. Open your app in the [Streamlit Cloud dashboard](https://share.streamlit.io)
 2. Go to **⋮ → Settings → Secrets**
-3. Paste the TOML key-value pairs and save — changes apply immediately without a redeploy
+3. Paste all four TOML key-value pairs and save — changes apply immediately
 
 ---
 
 ## Deployment
 
-The app is hosted on **Streamlit Community Cloud** (free tier).
+The app is hosted on **Streamlit Community Cloud** and the database on **Supabase** (both free tiers).
 
-### Auto-deploy from `main`
+### Supabase database setup (one-time)
 
-Streamlit Cloud watches the `main` branch and automatically triggers a new production build on every push. No manual steps are needed after the initial setup.
+1. Create a free project at [supabase.com](https://supabase.com).
+2. In the Supabase dashboard open **SQL Editor → New query**.
+3. Paste and run [`supabase/schema.sql`](supabase/schema.sql) to create the `recipes` table.
+4. Paste and run [`supabase/seed.sql`](supabase/seed.sql) to insert all 16 recipes.
+5. Copy your **Project URL** and **anon/public API key** from **Settings → API**.
 
-### Initial setup (one-time)
+### Streamlit Community Cloud setup (one-time)
 
 1. Push the repo to GitHub.
 2. Go to [share.streamlit.io](https://share.streamlit.io) and sign in with your GitHub account.
 3. Click **New app** → select this repository → set **Main file path** to `app.py` → click **Deploy**.
-4. In **Settings → Secrets**, paste your `MINIMAX_API_KEY` (and optionally `MINIMAX_BASE_URL`).
+4. In **⋮ → Settings → Secrets**, paste:
+   ```toml
+   MINIMAX_API_KEY = "your-minimax-key"
+   MINIMAX_BASE_URL = "https://api.minimax.chat/v1"
+   SUPABASE_URL = "https://your-project-ref.supabase.co"
+   SUPABASE_KEY = "your-anon-public-key"
+   ```
 5. The app will build and publish at `https://<your-app-name>.streamlit.app`.
+
+### Auto-deploy from `main`
+
+Streamlit Cloud watches the `main` branch and triggers a new production build on every push automatically. No manual steps are needed after the initial setup.
 
 ### CI checks
 
